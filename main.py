@@ -1,16 +1,11 @@
 """
 DNA Genome Processing Program
 
-This program performs several bioinformatics tasks related to DNA genome strings. It includes the following functionalities:
+functionalities:
 
 - Compute the reverse complement of a DNA sequence.
 - Count the occurrences of a k-mer (including reverse complements) in a genome.
 - Find the most frequent k-mers (including reverse complements) in a genome.
-
-Usage:
-
-- The program reads a genome string from a file specified by the user.
-- It then displays a menu of options for the user to choose from.
 
 Functions:
 
