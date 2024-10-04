@@ -155,7 +155,7 @@ def read_genome_from_file(filename):
             # Read the entire content of the file
             genome = f.read()
 
-            # Remove all whitespace characters (including spaces and newlines) and convert to uppercase
+            # Remove all whitespace characters and convert to uppercase
             genome = ''.join(genome.split()).upper()
 
             # Validate the genome sequence to ensure it contains only valid nucleotides
@@ -173,13 +173,13 @@ def read_genome_from_file(filename):
 
 def is_valid_dna_sequence(sequence):
     """
-    Checks if a sequence contains only valid DNA nucleotides (A, C, G, T).
+    Checks if a sequence contains only valid DNA nucleotides (A, C, G, T)
 
     Args:
-        sequence (str): DNA sequence to validate.
+        sequence (str): DNA sequence to validate
 
     Returns:
-        bool: True if valid, False otherwise.
+        bool: True if valid, False otherwise
     """
     # Define a set of valid nucleotides for quick lookup
     valid_nucleotides = set('ACGT')
