@@ -102,7 +102,7 @@ print(most_freq)  # Outputs a list of the most frequent 3-mers
 
 ### 4. Main Program
 
-**Description:** A menu-based interface that allows users to interactively choose between computing reverse complements, counting k-mers, finding the most frequent k-mers, or exiting the program.
+**Description:** A menu-based interface that allows users to interactively choose between different operations.
 
 ### 5. Input Validation
 
@@ -179,3 +179,62 @@ print(most_freq)  # Outputs a list of the most frequent 3-mers
 - **Genome Sequence:** `ACGTACGTAC`
 - **k = 3`
 - **Most Frequent k-mers:** `ACG`, `CGT`, `GTA`, `TAC` (each appearing twice)
+
+# Notes:
+for ```frequent_k_mers()```:
+Given:
+
+Genome Sequence: "ACGTACGTAC"
+k-mer Length (k): 3
+Processing Steps:
+
+## First Iteration (i = 0):
+
+- k-mer: "ACG"
+- Reverse Complement: "CGT"
+- Canonical k-mer: "ACG" (since "ACG" < "CGT")
+- Search in unique_k_mers: Not found (unique_k_mers is empty)
+- Action:
+- Append "ACG" to unique_k_mers: ["ACG"]
+- Append 1 to counts: [1]
+
+## Second Iteration (i = 1):
+
+- k-mer: "CGT"
+- Reverse Complement: "ACG"
+- Canonical k-mer: "ACG" (since "ACG" < "CGT")
+- Search in unique_k_mers: Found at j = 0
+- Action:
+- Increment counts[0]: [2]
+
+## Third Iteration (i = 2):
+
+- k-mer: "GTA"
+- Reverse Complement: "TAC"
+- Canonical k-mer: "GTA" vs "TAC" → "GTA" > "TAC" → "TAC"
+- Search in unique_k_mers: Not found
+- Action:
+- Append "TAC" to unique_k_mers: ["ACG", "TAC"]
+- Append 1 to counts: [2, 1]
+
+Fourth Iteration (i = 3):
+
+- k-mer: "TAC"
+- Reverse Complement: "GTA"
+- Canonical k-mer: "TAC"
+- Search in unique_k_mers: Found at j = 1
+- Action:
+- Increment counts[1]: [2, 2]
+- Subsequent Iterations (i = 4 to i = 7):
+
+- Each k-mer: "ACG", "CGT", "GTA", "TAC"
+- Canonical k-mers: "ACG", "ACG", "TAC", "TAC"
+- Action: Increment counts accordingly, resulting in counts = [4, 4]
+- Final Lists:
+
+   - unique_k_mers = ["ACG", "TAC"]
+  - counts = [4, 4]
+  - Determining the Most Frequent k-mers:
+
+  - Maximum Count (max_count): 4
+  - Most Frequent k-mers: ["ACG", "TAC"]
