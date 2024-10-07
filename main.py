@@ -97,7 +97,6 @@ def count_k_mer(genome, pattern):
 
     # Initialize a counter for occurrences
     count = 0
-
     # Iterate over genome to extract all possible k-mers
     for i in range(len(genome) - pattern_length + 1):
         # Extract current k-mer substring
@@ -116,7 +115,7 @@ def min_k_mer(k_mer1, k_mer2):
     determines the lexicographically smaller k-mer between two k-mers
 
     Args:
-        k_mer1 (str): First k-mer.
+        k_mer1 (str): First k-mer
         k_mer2 (str): Second k-mer (usually the reverse complement)
 
     Returns:
@@ -214,15 +213,15 @@ def read_genome_from_file(filename):
     try:
         # Attempt to open the file in read mode
         with open(filename, 'r') as f:
-            # Read the entire content of the file
+            # Read file
             genome = f.read()
 
             # Remove all whitespace characters and convert to uppercase
             genome = ''.join(genome.split()).upper()
 
-            # Validate the genome sequence to ensure it contains only valid nucleotides
+            # Validate the genome to ensure it contains only valid nucleotides
             if not is_valid_dna_sequence(genome):
-                # If invalid, print an error message and return an empty string
+                # If invalid, print an error message and return empty string
                 print("Invalid genome sequence in the file.")
                 return ''
 
@@ -259,10 +258,9 @@ def main():
     # Prompt the user to enter the filename containing the genome string
     filename = input("Enter the genome filename: ")
 
-    # Attempt to read the genome from the specified file
     genome = read_genome_from_file(filename)
 
-    # If the genome is empty (due to file not found or invalid content), exit the program
+    # If the genome is empty, exit the program
     if not genome:
         return
 
@@ -278,9 +276,9 @@ def main():
         # Prompt the user to enter their choice
         choice = input("Enter your choice (1-4): ")
 
-        # Handle the user's choice using conditional statements
+        # Handle the user's choice, conditional statements
         if choice == '1':
-            # Option 1: Compute reverse complement of a k-mer pattern
+            # Option 1: reverse complement of a k-mer pattern
             pattern = input("Enter the k-mer pattern: ").upper()  # Read the pattern and convert to uppercase
 
             # Validate the pattern input to ensure it's not empty and contains only valid nucleotides
@@ -288,14 +286,14 @@ def main():
                 print("Invalid pattern input.")
                 continue  # Restart the loop to display the menu again
 
-            # Compute the reverse complement using the reverse_pattern function
+            # Reverse complement using the reverse_pattern function
             reverse_comp = reverse_pattern_dict(pattern)
 
             # Display the reverse complement to the user
             print("Reverse complement:", reverse_comp)
 
         elif choice == '2':
-            # Option 2: Count the occurrences of a k-mer pattern
+            # Option 2: count the k-mer pattern
             pattern = input("Enter the k-mer pattern: ").upper()  # Read the pattern and convert to uppercase
 
             # Validate the pattern input
@@ -303,7 +301,7 @@ def main():
                 print("Invalid pattern input.")
                 continue  # restart the loop
 
-            # Count the occurrences using the count_k_mer function
+            # Count using count_k_mer function
             count = count_k_mer(genome, pattern)
 
             # Display the count to the user
